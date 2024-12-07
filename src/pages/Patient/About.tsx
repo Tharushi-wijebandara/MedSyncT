@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from '../components/Header';
-import Card from '../components/Card';
+import Header from '../../components/Header';
+import Card from '../../components/Card';
+import Footer from '../../components/Footer';
 
 const About:React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const About:React.FC = () => {
           <Card/><Card/><Card/><Card/>
         </div>
       </div>
-      
+      <Footer/>
     </div>
   )
 }
