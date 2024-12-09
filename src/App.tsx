@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./pages/Patient/Home";
-// import About from "./pages/Patient/About";
+
 
 
 
