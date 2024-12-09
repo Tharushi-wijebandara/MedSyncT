@@ -1,5 +1,6 @@
 import "./App.css";
-import About from "./pages/Patient/About";
+import Home from "./pages/Patient/Home";
+// import About from "./pages/Patient/About";
 
 
 
@@ -7,7 +8,7 @@ function App() {
   return (
     <>
       <div className="bg-background-color">
-        <About/>
+        <Home/>
       </div>
     </>
   );
