@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface BookCard {
   date: string;
@@ -10,6 +11,7 @@ interface BookCard {
 
 
 const BookCard:React.FC= () => {
+  const navigate = useNavigate();
   const bookcards: BookCard[] = [
     { date: "DECEMBER 10, 2024", day: "TUE", time: "09:00 AM", activeAppointments: 2, availability: "AVAILABLE" },
     { date: "DECEMBER 14, 2024", day: "SAT", time: "09:00 AM", activeAppointments: 1, availability: "AVAILABLE" },
@@ -38,10 +40,12 @@ const BookCard:React.FC= () => {
               <span className="text-gray-500 text-xs">ACTIVE APPOINTMENTS</span>
               <span className="text-primary-color font-bold">{appointment.activeAppointments.toString().padStart(2, '0')}</span>
             </div>
-            <button className="bg-primary-color text-white font-semibold py-2 px-4 rounded-md hover:bg-secondary-color">
-              <span className="material-icons text-white mr-2"></span>
-              Book
-            </button>
+            <div  >
+            <button className="bg-primary-color text-white font-semibold py-2 px-4 rounded-md hover:bg-secondary-color"  /*onClick={() => navigate("/Shedule")}*/>
+              <span className="material-icons text-white mr-2" ></span>
+              Book 
+            </button></div>
+            
             <span className="text-green-600 font-bold">{appointment.availability}</span>
           </div>
         ))}

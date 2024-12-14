@@ -1,10 +1,12 @@
 import React from 'react'
+import {useNavigate} from "react-router-dom"
 
 interface ChannelCard {
     name: string;
     specialty: string;
   }
 const ChannelCard:React.FC= () => {
+    const navigate= useNavigate();
     const doctors: ChannelCard[] = [
         { name: "Prof. SISIRA RANARAJA", specialty: "Obstetrician & Gynaecologist" },
     { name: "Dr. JOHN DOE", specialty: "Cardiologist" },
@@ -28,7 +30,7 @@ const ChannelCard:React.FC= () => {
                 <h4 className="text-md font-bold text-primary-color">{doctor.name}</h4>
                 <p className="text-gray-700 text-sm">{doctor.specialty}</p>
               </div>
-              <button className="ml-auto bg-primary-color text-white font-semibold py-2 px-4 rounded-md hover:bg-secondary-color">
+              <button  className="ml-auto bg-primary-color text-white font-semibold py-2 px-4 rounded-md hover:bg-secondary-color" onClick={() => navigate("/Book")} >
                 <span className="material-icons text-white mr-2"></span>
                 Channel
               </button>
