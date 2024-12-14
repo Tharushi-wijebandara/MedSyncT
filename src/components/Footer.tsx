@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-white mt-6 pt-6 text-center text-sm ">
           <p>© DIGITAL HEALTH PVT LTD. ALL RIGHTS RESERVED.</p>
           <p>
-            Technology Partner: <span className="font-bold">mediwave</span><br/><br/>
+            Technology Partner: <span className="font-bold">MedSync</span><br/><br/>
           </p>
         </div>
       </div>
