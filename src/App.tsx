@@ -5,6 +5,7 @@ import DoctorChannel from "./pages/patient/DoctorChannel";
 import Channel from "./pages/patient/Channel";
 import Book from "./pages/patient/Book";
 import Contact from "./pages/patient/Contact";
+import GetInfo from "./pages/patient/GetInfo";
 import Payment from "./pages/patient/Payment";
 import DHome from "./pages/doctor/DHome";
 import Form from "./pages/doctor/Form";
@@ -26,6 +27,7 @@ function App() {
         </Route>
         <Route path="/Book" element={<Book />} />
         <Route path="/ContactUs" element={<Contact />} />
+        <Route path="/GetInfo" element={<GetInfo />} />
         <Route path="/Payment" element={<Payment />} />
 
         <Route path="/DHome" element={<DHome />} />

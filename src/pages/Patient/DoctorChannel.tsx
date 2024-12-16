@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 const MyBooking: React.FC = () => {
   const navigate = useNavigate();
@@ -15,10 +17,16 @@ const MyBooking: React.FC = () => {
     const special=formData.get("special")
     console.log(special)
     if(name=="Select" && special=="Select"){
-      console.log("kavindu")
-      
-
-    }
+      console.log("kavindu");
+      Swal.fire({
+        title: "Oops!",
+        text: "Please select any option",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#6eab36", // Orange color
+      });}
+      else if (name!="Select"){
+        navigate("/Book")
+      }
     else{
       navigate("/DoctorChannel/Channel")
 
@@ -26,7 +34,14 @@ const MyBooking: React.FC = () => {
   }
   return (
     <div>
+    
       <Header />
+       <div className="h-screen bg-custom-bg bg-cover bg-center bg-no-repeat bg-fixed">
+  <h1 className="text-white text-4xl font-bold text-center pt-20">
+    
+  </h1>
+</div> 
+    
       <div className="flex justify-center items-center h-screen bg-gray-100 ">
         <div className="bg-white shadow-lg rounded-lg p-6 w-96">
           <h2 className="text-2xl font-semibold text-center text-primary-color mb-4">
@@ -72,6 +87,7 @@ const MyBooking: React.FC = () => {
           </form>
         </div>
       </div>
+      
       <Footer />
     </div>
   );
