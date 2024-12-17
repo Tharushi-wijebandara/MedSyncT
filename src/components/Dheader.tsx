@@ -2,9 +2,12 @@ import React from "react";
 import image from "../assets/images/logo.png";
 import {useState} from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Dheader: React.FC = () => {
+  const navigate= useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <div>
       <div className="w-full flex items-center">
@@ -19,21 +22,21 @@ const Dheader: React.FC = () => {
           <div className="basis-2/4 flex gap-5 font-semibold cursor-pointer justify-center items-center ">
           <div
             className=" hover:text-[#007E85] bg-white p-2 rounded-md"
-            onClick={() => console.log("Contact Us")}
+            onClick={() => navigate("/DHome")}
           >
             Home
           </div>
           <div
             className=" hover:text-[#007E85] bg-white p-2 rounded-md"
-            onClick={() => console.log("Contact Us")}
+            onClick={() => navigate("/Register")}
           >
             Register
           </div>
           <div
             className=" hover:text-[#007E85] bg-white p-2 rounded-md"
-            onClick={() => console.log("Contact Us")}
+            onClick={() => navigate("/Loging")}
           >
-            Login
+            Loging
           </div>
           </div>
           <div className="relative">
