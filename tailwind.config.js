@@ -8,9 +8,7 @@ export default {
         "secondary-color": "#6EAB36",
         "background-color": "#ECECEC",
       },
-      backgroundImage: {
-        'custom-bg': "url('./src/assets/images/1.png')",
-      },
+      
     },
   },
   plugins: [],
