@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import bgimg from "../../assets/images/1.png"
 
 
 const MyBooking: React.FC = () => {
@@ -11,13 +12,13 @@ const MyBooking: React.FC = () => {
     //stop refresh page
     e.preventDefault();
     console.log(e);
-    const formData=new FormData(e.target);
+    const formData = new FormData(e.target as HTMLFormElement);
     const name=formData.get("name")
     console.log(name)
     const special=formData.get("special")
     console.log(special)
     if(name=="Select" && special=="Select"){
-      console.log("kavindu");
+     
       Swal.fire({
         title: "Oops!",
         text: "Please select any option",
@@ -36,13 +37,10 @@ const MyBooking: React.FC = () => {
     <div>
     
       <Header />
-       <div className="h-screen bg-custom-bg bg-cover bg-center bg-no-repeat bg-fixed">
-  <h1 className="text-white text-4xl font-bold text-center pt-20">
-    
-  </h1>
-</div> 
-    
-      <div className="flex justify-center items-center h-screen bg-gray-100 ">
+      
+      <div className="flex justify-center items-center h-screen bg-gray-100 bg-cover "
+      style={{backgroundImage:`url(${bgimg})`}}
+      >
         <div className="bg-white shadow-lg rounded-lg p-6 w-96">
           <h2 className="text-2xl font-semibold text-center text-primary-color mb-4">
             Channel Your Doctor

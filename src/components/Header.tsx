@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   const navigate= useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="w-full flex items-center">
+    <div className="w-full flex justify-center bg-background-color items-center">
       <div className="flex flex-row container bg-background-color px-5 py-2">
         <div className="basis-1/4">
           <img
