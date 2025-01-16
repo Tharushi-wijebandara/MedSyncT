@@ -2,21 +2,24 @@ import React from 'react'
 import { useState } from "react";
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import { useNavigate } from 'react-router-dom';
 
 interface GetInfo {
-  firstName: string;
-  lastName: string;
+  Name: string;
   email: string;
   phone: string;
- 
+  nic: string;
+  password: string;
 }
 
 const GetInfo: React.FC = () => {
+  const navigate= useNavigate();
   const [GetInfo, setGetInfo] = useState<GetInfo>({
-    firstName: "",
-    lastName: "",
+    Name: "",
+    nic: "",
     email: "",
     phone: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -25,8 +28,8 @@ const GetInfo: React.FC = () => {
     const newErrors: { [key: string]: string } = {};
 
     // First Name Validation
-    if (!GetInfo.firstName.trim()) {
-      newErrors.firstName = "First name is required";
+    if (!GetInfo.Name.trim()) {
+      newErrors.Name = "Name is required";
     }
 
     // Phone Number Validation (10 digits)
@@ -37,6 +40,11 @@ const GetInfo: React.FC = () => {
     // Email Validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(GetInfo.email)) {
       newErrors.email = "Please enter a valid email address";
+    }
+    
+     // Password Validation
+    if (!GetInfo.password.trim()) {
+      newErrors.password = " Password is required";
     }
 
 
@@ -59,17 +67,11 @@ const GetInfo: React.FC = () => {
     e.preventDefault();
     if (validate()) {
 
-      //api
-      const data = {
-        firstName: GetInfo.firstName,
-        lastName: GetInfo.lastName,
-        email: GetInfo.email,
-        phone: GetInfo.phone,
-      };
-      //api
+      
 
       console.log("Form submitted successfully: ", GetInfo);
       alert("Form submitted successfully!");
+      navigate("/Payment");
     } else {
       console.log("Validation errors: ", errors);
     }
@@ -84,22 +86,22 @@ const GetInfo: React.FC = () => {
 
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* First Name & Last Name */}
+        {/* Name*/}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-gray-700">Name</label>
             <input
               type="text"
-              name="firstName"
-              placeholder="Enter your first name"
-              value={GetInfo.firstName}
+              name="Name"
+              placeholder="Enter your name"
+              value={GetInfo.Name}
               onChange={handleChange}
               className={`w-full border rounded px-3 py-2 focus:outline-none ${
-                errors.firstName ? "border-primary-color" : "focus:ring focus:ring-blue-300"
+                errors.Name ? "border-primary-color" : "focus:ring focus:ring-blue-300"
               }`}
               required
             />
-            {errors.firstName && <p className="text-primary-color text-sm">{errors.firstName}</p>}
+            {errors.Name && <p className="text-primary-color text-sm">{errors.Name}</p>}
           </div>
           <div>
             <label className="block text-gray-700">Phone number</label>
@@ -120,9 +122,9 @@ const GetInfo: React.FC = () => {
             <label className="block text-gray-700">NIC</label>
             <input
               type="text"
-              name="lastName"
-              placeholder="Enter your last name"
-              value={GetInfo.lastName}
+              name="nic"
+              placeholder="Enter your NIC"
+              value={GetInfo.nic}
               onChange={handleChange}
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
             />
@@ -130,9 +132,9 @@ const GetInfo: React.FC = () => {
         
 
         {/* Email & Phone */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
           <div>
-            <label className="block text-gray-700">Email</label>
+            <label className="block text-gray-700 ">Email</label>
             <input
               type="email"
               name="email"
@@ -140,25 +142,25 @@ const GetInfo: React.FC = () => {
               value={GetInfo.email}
               onChange={handleChange}
               className={`w-full border rounded px-3 py-2 focus:outline-none ${
-                errors.email ? "border-primary-color" : "focus:ring focus:ring-blue-300"
+                errors.password ? "border-primary-color" : "focus:ring focus:ring-blue-300"
               }`}
             />
             {errors.email && <p className="text-primary-color text-sm">{errors.email}</p>}
           </div>
-          </div>
+          
           <div>
             <label className="block text-gray-700">Password</label>
             <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={GetInfo.email}
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              value={GetInfo.password}
               onChange={handleChange}
               className={`w-full border rounded px-3 py-2 focus:outline-none ${
-                errors.email ? "border-primary-color" : "focus:ring focus:ring-blue-300"
+                errors.password ? "border-primary-color" : "focus:ring focus:ring-blue-300"
               }`}
             />
-            {errors.email && <p className="text-primary-color text-sm">{errors.email}</p>}
+            {errors.password && <p className="text-primary-color text-sm">{errors.password}</p>}
           </div>
           
         </div>
@@ -168,8 +170,8 @@ const GetInfo: React.FC = () => {
         <div>
           <button
             type="submit"
-            className="w-full bg-teal-600 text-white font-semibold py-2 rounded hover:bg-teal-700 transition duration-300"
-          >
+            className="w-full bg-teal-600 text-white font-semibold py-2 rounded hover:bg-teal-700 transition duration-300" 
+             >
             Submit
           </button>
         </div>
