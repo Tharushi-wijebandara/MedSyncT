@@ -3,6 +3,7 @@ import Dheader from '../../components/Dheader'
 import Footer from '../../components/Footer'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import bgimg from '../../assets/Images/1.png'
 
 const Register:React.FC = () => {
    const navigate= useNavigate();
@@ -26,29 +27,30 @@ const Register:React.FC = () => {
   return (
     <div>
       <Dheader/>
-        <div>
+        <div className='flex justify-center py-3 bg-cover' 
+        style={{backgroundImage:`url(${bgimg})`}}>
         <div className="bg-white/65 shadow-lg rounded-lg p-8 max-w-sm w-full">
         <h2 className="text-2xl font-bold text-center text-black mb-6">
-          Login Page
+          Loging Page
         </h2>
         <div className="mb-4">
           <label
             htmlFor="userId"
             className="block text-gray-600 font-medium mb-2"
           >
-            Select ID:
+            Enter ID:
           </label>
-          <select
+          <input
+            type="text"
+            name="doctorId"
             id="userId"
             value={selectedId}
             onChange={(e) => setSelectedId(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="">-- Select ID --</option>
-            <option value="1">12345</option>
-            <option value="2">56789</option>
-            <option value="3">45678</option>
-          </select>
+             
+             
+          </input>
         </div>
         <div className="mb-4">
           <label
@@ -71,7 +73,7 @@ const Register:React.FC = () => {
         )}
         <button
           onClick={() => navigate("/Form")}
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+          className="w-full bg-primary-color text-white py-2 rounded hover:bg-secondary-color transition" 
         >
           Login
         </button>

@@ -4,6 +4,7 @@ import Footer from '../../components/Footer'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AtSign, Phone, User, KeyRound, Stethoscope, Hospital } from 'lucide-react';
+import bgimg from '../../assets/Images/1.png'
 
 const Form:React.FC = () => {
   const navigate= useNavigate();
@@ -46,14 +47,14 @@ const Form:React.FC = () => {
 
     // Name validation
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = 'Name is required*';
       isValid = false;
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = 'Email is required*';
       isValid = false;
     } else if (!emailRegex.test(formData.email)) {
       newErrors.email = 'Invalid email format';
@@ -63,7 +64,7 @@ const Form:React.FC = () => {
     // Phone validation
     const phoneRegex = /^[0-9]{10}$/;
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
+      newErrors.phone = 'Phone number is required*';
       isValid = false;
     } else if (!phoneRegex.test(formData.phone)) {
       newErrors.phone = 'Phone number must be 10 digits';
@@ -72,19 +73,19 @@ const Form:React.FC = () => {
 
     // Specialty validation
     if (!formData.specialty.trim()) {
-      newErrors.specialty = 'Specialty is required';
+      newErrors.specialty = 'Specialty is required*';
       isValid = false;
     }
 
     // Doctor ID validation
     if (!formData.doctorId.trim()) {
-      newErrors.doctorId = 'Doctor ID is required';
+      newErrors.doctorId = 'Doctor ID is required*';
       isValid = false;
     }
 
     // Password validation
     if (!formData.password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = 'Password is required*';
       isValid = false;
     } else if (formData.password.length < 8) {
       newErrors.password = 'Password must be at least 8 characters';
@@ -101,12 +102,15 @@ const Form:React.FC = () => {
       // Submit form logic here
       console.log('Form submitted', formData);
       alert('Registration Successful!');
+      
     }
   };
   return (
+    
     <div>
         <Dheader/>
-        <div>
+        <div className='bg-cover' 
+        style={{backgroundImage:`url(${bgimg})`}}>
         <div className="min-h-screen bg-cover bg-center flex items-center justify-center p-4 bg-primary-green" 
          style={{
            backgroundImage: 'url("/images/doctor.jpeg")',
@@ -116,15 +120,15 @@ const Form:React.FC = () => {
     
       <div className="bg-white/30 backdrop-blur-sm rounded-xl shadow-2xl max-w-md w-full p-8 border border-blue-100">
         <div className="text-center mb-6">
-          <h2 className="text-3xl font-bold text-blue-800 mb-2">Doctor Registration</h2>
-          <p className="text-gray-600">Join Our Medical Team</p>
+          <h2 className="text-3xl font-bold text-primary-color mb-2">Doctor Registration</h2>
+          <p className="text-gray-600 font-semibold">Join Our Medical Team</p>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Input */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <User className="text-blue-500" />
+              <User className="text-primary-color" />
             </div>
             <input
               type="text"
@@ -133,7 +137,7 @@ const Form:React.FC = () => {
               onChange={handleChange}
               placeholder="Full Name"
               className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 
-                ${errors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
+                ${errors.name ? 'border-primary-color focus:ring-red-500' : 'border-gray-300 focus:ring-primary-color'}`}
             />
             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
           </div>
@@ -141,7 +145,7 @@ const Form:React.FC = () => {
           {/* Email Input */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <AtSign className="text-blue-500" />
+              <AtSign className="text-primary-color" />
             </div>
             <input
               type="email"
@@ -150,7 +154,7 @@ const Form:React.FC = () => {
               onChange={handleChange}
               placeholder="Email Address"
               className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 
-                ${errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
+                ${errors.email ? 'border-primary-color focus:ring-red-500' : 'border-gray-300 focus:ring-primary-color'}`}
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
@@ -158,7 +162,7 @@ const Form:React.FC = () => {
           {/* Phone Input */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Phone className="text-blue-500" />
+              <Phone className="text-primary-color" />
             </div>
             <input
               type="tel"
@@ -167,7 +171,7 @@ const Form:React.FC = () => {
               onChange={handleChange}
               placeholder="Phone Number"
               className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 
-                ${errors.phone ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
+                ${errors.phone ? 'border-primary-color focus:ring-red-500' : 'border-gray-300 focus:ring-primary-color'}`}
             />
             {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
           </div>
@@ -175,7 +179,7 @@ const Form:React.FC = () => {
           {/* Specialty Input */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Stethoscope className="text-blue-500" />
+              <Stethoscope className="text-primary-color" />
             </div>
             <input
               type="text"
@@ -184,7 +188,7 @@ const Form:React.FC = () => {
               onChange={handleChange}
               placeholder="Medical Specialty"
               className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 
-                ${errors.specialty ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
+                ${errors.specialty ? 'border-primary-color focus:ring-red-500' : 'border-gray-300 focus:ring-primary-color'}`}
             />
             {errors.specialty && <p className="text-red-500 text-sm mt-1">{errors.specialty}</p>}
           </div>
@@ -192,7 +196,7 @@ const Form:React.FC = () => {
           {/* Doctor ID Input */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Hospital className="text-blue-500" />
+              <Hospital className="text-primary-color" />
             </div>
             <input
               type="text"
@@ -201,7 +205,7 @@ const Form:React.FC = () => {
               onChange={handleChange}
               placeholder="Doctor ID"
               className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 
-                ${errors.doctorId ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
+                ${errors.doctorId ? 'border-primary-color focus:ring-red-500' : 'border-gray-300 focus:ring-primary-color'}`}
             />
             {errors.doctorId && <p className="text-red-500 text-sm mt-1">{errors.doctorId}</p>}
           </div>
@@ -209,7 +213,7 @@ const Form:React.FC = () => {
           {/* Password Input */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <KeyRound className="text-blue-500" />
+              <KeyRound className="text-primary-color" />
             </div>
             <input
               type="password"
@@ -218,7 +222,7 @@ const Form:React.FC = () => {
               onChange={handleChange}
               placeholder="Password"
               className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 
-                ${errors.password ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
+                ${errors.password ? 'border-primary-color focus:ring-red-500' : 'border-gray-300 focus:ring-primary-color'}`}
             />
             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
           </div>
@@ -226,7 +230,7 @@ const Form:React.FC = () => {
           {/* Submit Button */}
           <button 
             type="submit" 
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 ease-in-out"
+            className="w-full bg-primary-color text-white py-2 rounded-lg hover:bg-secondary-color transition-colors duration-300 ease-in-out"
             
             
           >

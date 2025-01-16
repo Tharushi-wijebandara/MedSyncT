@@ -23,12 +23,12 @@ const DHome:React.FC = () => {
             <button 
               className="flex flex-col items-center bg-blue-500 text-white p-4 rounded-lg hover:bg-blue-600 transition w-40 " onClick={() => navigate("/Register")}
             >
-              <UserPlus size={40} className="mb-2" />
+              <UserPlus size={40} className="mb-2"  />
               <span>Register</span>
             </button>
             
             <button 
-              className="flex flex-col items-center bg-green-500 text-white p-4 rounded-lg hover:bg-green-600 transition w-40" onClick={() => navigate("/Loging")}
+              className="flex flex-col items-center bg-green-500 text-white p-4 rounded-lg hover:bg-green-600 transition w-40" onClick={() => navigate("/DLoging")}
             >
               <LogIn size={40} className="mb-2" />
               <span>Login</span>
