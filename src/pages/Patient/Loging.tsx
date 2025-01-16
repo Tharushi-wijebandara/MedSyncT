@@ -17,7 +17,6 @@ const GetInfo: React.FC = () => {
     lastName: "",
     email: "",
     phone: "",
-    
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -59,6 +58,16 @@ const GetInfo: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
+
+      //api
+      const data = {
+        firstName: GetInfo.firstName,
+        lastName: GetInfo.lastName,
+        email: GetInfo.email,
+        phone: GetInfo.phone,
+      };
+      //api
+
       console.log("Form submitted successfully: ", GetInfo);
       alert("Form submitted successfully!");
     } else {
@@ -70,15 +79,15 @@ const GetInfo: React.FC = () => {
 
     <>
     <Header/>
-    <div className="max-w-2xl mx-auto mt-10 px-6 py-8 bg-white shadow-md rounded-md">
-      <h2 className="text-3xl font-bold text-center mb-4">Contact Us</h2>
+    <div className="max-w-2xl mx-auto mt-10 px-6 py-8 bg-white shadow-md rounded-md h-96">
+      <h2 className="text-3xl font-bold text-center mb-4">Registation</h2>
 
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* First Name & Last Name */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-gray-700">First name</label>
+            <label className="block text-gray-700">Name</label>
             <input
               type="text"
               name="firstName"
@@ -93,7 +102,22 @@ const GetInfo: React.FC = () => {
             {errors.firstName && <p className="text-primary-color text-sm">{errors.firstName}</p>}
           </div>
           <div>
-            <label className="block text-gray-700">Last name</label>
+            <label className="block text-gray-700">Phone number</label>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Enter your phone number"
+              value={GetInfo.phone}
+              onChange={handleChange}
+              maxLength={10}
+              className={`w-full border rounded px-3 py-2 focus:outline-none ${
+                errors.phone ? "border-primary-color" : "focus:ring focus:ring-blue-300"
+              }`}
+            />
+            {errors.phone && <p className="text-primary-color text-sm">{errors.phone}</p>}
+          </div>
+          <div>
+            <label className="block text-gray-700">NIC</label>
             <input
               type="text"
               name="lastName"
@@ -103,7 +127,7 @@ const GetInfo: React.FC = () => {
               className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
             />
           </div>
-        </div>
+        
 
         {/* Email & Phone */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -121,21 +145,22 @@ const GetInfo: React.FC = () => {
             />
             {errors.email && <p className="text-primary-color text-sm">{errors.email}</p>}
           </div>
+          </div>
           <div>
-            <label className="block text-gray-700">Phone number</label>
+            <label className="block text-gray-700">Password</label>
             <input
-              type="tel"
-              name="phone"
-              placeholder="Enter your phone number"
-              value={GetInfo.phone}
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={GetInfo.email}
               onChange={handleChange}
-              maxLength={10}
               className={`w-full border rounded px-3 py-2 focus:outline-none ${
-                errors.phone ? "border-primary-color" : "focus:ring focus:ring-blue-300"
+                errors.email ? "border-primary-color" : "focus:ring focus:ring-blue-300"
               }`}
             />
-            {errors.phone && <p className="text-primary-color text-sm">{errors.phone}</p>}
+            {errors.email && <p className="text-primary-color text-sm">{errors.email}</p>}
           </div>
+          
         </div>
 
 

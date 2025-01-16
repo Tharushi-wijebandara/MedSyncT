@@ -34,7 +34,7 @@ const Dheader: React.FC = () => {
           </div>
           <div
             className=" hover:text-[#007E85] bg-white p-2 rounded-md"
-            onClick={() => navigate("/Loging")}
+            onClick={() => navigate("/DLoging")}
           >
             Loging
           </div>
