@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   return (
     <div className="w-full flex justify-center bg-background-color items-center">
       <div className="flex flex-row container bg-background-color px-5 py-2">
-        <div className="basis-1/4" onClick={() => navigate("/")}>
+        <div className="basis-1/4 hover:cursor-pointer" onClick={() => navigate("/")} >
           <img 
             className="flex items-center w-[130px]  rounded-xl"
             src={image}
