@@ -68,28 +68,28 @@ const MyBooking: React.FC = () => {
           >
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                <span className="flex items-center">Doctor</span>
+                <span className="flex items-center">Specialization</span>
               </label>
               <select
                 className="w-full border border-gray-300 rounded-md py-2 px-3 "
                 name="name"
               >
                 <option>Select</option>
-                <option>Name</option>
+                <option>Specialization</option>
               </select>
 
               <br />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                <span className="flex items-center">Specialization</span>
+                <span className="flex items-center">Doctor</span>
               </label>
               <select
                 className="w-full border border-gray-300 rounded-md py-2 px-3 "
                 name="special"
               >
                 <option>Select</option>
-                <option>Specialization</option>
+                <option>Name</option>
               </select>
               <br />
               <br />
