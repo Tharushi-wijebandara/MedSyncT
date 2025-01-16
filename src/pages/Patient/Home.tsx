@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     <div>
       <Header />
 
-      <div className="w-full flex justify-end h-screen items-end">
+      <div className="w-full flex justify-end h-auto items-end">
         <div>
           <img src={homeimage} alt="doctor-image" />
         </div>
