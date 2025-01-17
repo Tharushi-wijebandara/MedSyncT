@@ -14,6 +14,7 @@ import Register from "./pages/doctor/Register";
 import Schedule from "./pages/doctor/Schedule";
 import AHome from "./pages/admin/AHome";
 import NotFoundPage from "./pages/patient/NotFoundPage";
+import { Profile } from "./pages/patient/Profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/Shedule" element={<Schedule />} />
         <Route path="/AHome" element={<AHome />} />
         <Route path="/NotFoundPage" element={<NotFoundPage />} />
+        <Route path="/Profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
