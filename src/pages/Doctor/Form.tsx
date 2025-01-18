@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AtSign, Phone, User, KeyRound, Stethoscope, Hospital } from 'lucide-react';
 import bgimg from '../../assets/Images/1.png'
+import { createDoctor } from '../../services/DoctorRoutes'
+//import { Doctor } from '../../types/doctorTypes'
 
 const Form:React.FC = () => {
   const navigate= useNavigate();
@@ -13,7 +15,7 @@ const Form:React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    contactNumber: '',
     specialty: '',
     doctorId: '',
     password: ''
@@ -22,7 +24,7 @@ const Form:React.FC = () => {
   const [errors, setErrors] = useState({
     name: '',
     email: '',
-    phone: '',
+    contactNumber: '',
     specialty: '',
     doctorId: '',
     password: ''
@@ -61,13 +63,13 @@ const Form:React.FC = () => {
       isValid = false;
     }
 
-    // Phone validation
-    const phoneRegex = /^[0-9]{10}$/;
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required*';
+    // contactNumber validation
+    const contactNumberRegex = /^[0-9]{10}$/;
+    if (!formData.contactNumber.trim()) {
+      newErrors.contactNumber = 'contactNumber number is required*';
       isValid = false;
-    } else if (!phoneRegex.test(formData.phone)) {
-      newErrors.phone = 'Phone number must be 10 digits';
+    } else if (!contactNumberRegex.test(formData.contactNumber)) {
+      newErrors.contactNumber = 'contactNumber number must be 10 digits';
       isValid = false;
     }
 
@@ -96,9 +98,10 @@ const Form:React.FC = () => {
     return isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
+      await createDoctor(formData);
       // Submit form logic here
       console.log('Form submitted', formData);
       alert('Registration Successful!');
@@ -159,21 +162,21 @@ const Form:React.FC = () => {
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
 
-          {/* Phone Input */}
+          {/* contactNumber Input */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Phone className="text-primary-color" />
+              <div className="text-primary-color" />
             </div>
             <input
               type="tel"
-              name="phone"
-              value={formData.phone}
+              name="contactNumber"
+              value={formData.contactNumber}
               onChange={handleChange}
-              placeholder="Phone Number"
+              placeholder="contactNumber Number"
               className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 
-                ${errors.phone ? 'border-primary-color focus:ring-red-500' : 'border-gray-300 focus:ring-primary-color'}`}
+                ${errors.contactNumber ? 'border-primary-color focus:ring-red-500' : 'border-gray-300 focus:ring-primary-color'}`}
             />
-            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+            {errors.contactNumber && <p className="text-red-500 text-sm mt-1">{errors.contactNumber}</p>}
           </div>
 
           {/* Specialty Input */}

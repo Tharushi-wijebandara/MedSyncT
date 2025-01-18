@@ -45,9 +45,9 @@ const MyBooking: React.FC = () => {
         confirmButtonColor: "#6eab36", // Orange color
       });
     } else if (name != "Select") {
-      navigate("/Book");    
+      navigate("/DoctorChannel/Channel");    
     } else {
-      navigate("/DoctorChannel/Channel");
+      navigate("/Book");
     }
   };
   return (
