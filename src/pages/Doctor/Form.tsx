@@ -101,9 +101,7 @@ const Form:React.FC = () => {
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      
-      const data = {doctorID: formData.doctorId, name: formData.name, contactNumber: formData.contactNumber, speciality: formData.specialty, password: formData.password}
-      await createDoctor(data);
+      await createDoctor(formdata);
       // Submit form logic here
       console.log('Form submitted', formData);
       alert('Registration Successful!');
@@ -115,7 +113,7 @@ const Form:React.FC = () => {
     <div>
         <Dheader/>
         <div className='bg-cover' 
-        style={{backgroundImage:`url(${bgimg})`}}>
+        style={{backgroundImage:url(${bgimg})}}>
         <div className="min-h-screen bg-cover bg-center flex items-center justify-center p-4 bg-primary-green" 
          style={{
            backgroundImage: 'url("/images/doctor.jpeg")',
